@@ -1048,6 +1048,23 @@
         categoryFilter.addEventListener('change', filterAndSortMannequins);
         sortBy.addEventListener('change', filterAndSortMannequins);
 
+        prevPage.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderMannequins();
+                    renderPagination();
+                }
+            });
+
+            nextPage.addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredMannequins.length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderMannequins();
+                    renderPagination();
+                }
+            });
+
         window.addEventListener('click', (e) => { if (e.target === cartModal) cartModal.classList.add('hidden'); });
 
         // Set min date
@@ -1065,5 +1082,6 @@
 </body>
 
 </html>
+
 
 
